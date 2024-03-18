@@ -1,0 +1,18 @@
+<ion-chip
+  *ngFor="let item of list"
+  [routerLink]="isMovie? ['/tabs/celebrity/detail/', item.celebrityId] : ['/tabs/movie/detail/', item.movieId]"
+>
+  <ion-avatar>
+    <img
+      *ngIf="isMovie"
+      alt="Silhouette of a person's head"
+      src="https://ionicframework.com/docs/img/demos/avatar.svg"
+    />
+    <img
+      *ngIf="!isMovie"
+      alt="Silhouette of a person's head"
+      src="https://ionicframework.com/docs/img/demos/avatar.svg"
+    />
+  </ion-avatar>
+  <ion-label>{{ isMovie ? item.celebrityName : item.movieTitle }}</ion-label>
+</ion-chip>

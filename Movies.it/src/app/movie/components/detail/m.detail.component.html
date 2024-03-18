@@ -1,0 +1,22 @@
+<ion-header [translucent]="true">
+  <app-header
+  [title] = "titlePage"
+  [showAdd] = "false"
+  [showBack] = "true"
+  ></app-header>
+  <ion-card *ngIf="movie">
+    <ion-card-header>
+      <ion-card-title>{{movie.title}}</ion-card-title>
+      <ion-card-subtitle>Genere: {{movie.genres}} || Anno: {{movie.year}} || Durata:
+        {{movie.runningTime}}</ion-card-subtitle>
+      <app-links *ngIf = "movie && movie.cast" [list]="movie.cast" [isMovie] = "true"></app-links>
+    </ion-card-header>
+    <ion-card-content>
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat atque cupiditate in doloribus nobis temporibus,
+      reprehenderit quia exercitationem. Cumque numquam odio beatae, quos suscipit sit harum deleniti neque dolorum id.
+    </ion-card-content>
+
+    <ion-button fill="clear">Edit</ion-button>
+    <ion-button fill="clear">Delete</ion-button>
+  </ion-card>
+</ion-header>

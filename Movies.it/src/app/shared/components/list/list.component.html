@@ -1,0 +1,40 @@
+<ion-list>
+  <ion-item-sliding *ngFor="let item of items_list">
+    <ion-item-options side="start">
+      <ion-item-option color="success" (click)="clickItemEdit.emit(item.id)"
+        >Edit</ion-item-option
+      >
+    </ion-item-options>
+
+    <ion-item>
+      <ion-avatar *ngIf="isCelebrity" aria-hidden="true" slot="start">
+        <img
+          alt=""
+          src="https://ionicframework.com/docs/img/demos/avatar.svg"
+        />
+      </ion-avatar>
+      <ion-label (click)="clickItem.emit(item.id)"
+        ><h2 [appShitColor]="item.rating">{{ item.name }}</h2>
+        <span *ngIf="item.cast">Cast: </span>
+        <span *ngFor="let actor of item.cast"
+          ><ng-container
+            *ngIf="actor.category === 'actor' || actor.category === 'actress'"
+          >
+            {{ actor.celebrityName }},
+          </ng-container></span
+        >
+      </ion-label>
+      <ion-label slot="end">
+        <span>{{ item.year }}</span>
+        <p *ngIf="item.rating">(rating: {{ item.rating | toInt : 2 }})</p>
+      </ion-label>
+    </ion-item>
+    <app-ratingbar *ngIf="item.rating" [value]="item.rating"></app-ratingbar>
+    <ion-item-options side="end" (click)="clickItemRemove.emit(item.id)">
+      <ion-item-option color="danger">Delete</ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-list>
+<ion-infinite-scroll>
+  <ion-infinite-scroll-content></ion-infinite-scroll-content>
+</ion-infinite-scroll>

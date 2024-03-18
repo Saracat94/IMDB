@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <app-header
+    [title]="titlePage"
+    [showAdd]="true"
+    [showBack]="false"
+    [showRange]="true"
+    [showOrderTo]="true"
+    [showSearchbar]="true"
+    (addEvent)="clickItemCreate()"
+    (searchInput)="searchInput($event)"
+    (orderRating)="sortByRating($event)"
+    (ratingRange)="ratingRange($event)"
+  ></app-header>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <app-list
+    [items_list]="movie_list | sortByRating: orderTo"
+    (clickItem)="clickItem($event)"
+    (clickItemEdit)="clickItemEdit($event)"
+    (clickItemRemove)="clickItemRemove($event)"
+    (ionInfinite)="onIonInfinite($event)"
+  ></app-list>
+</ion-content>
+
+<app-footer [itemDetail]="movieSelected"></app-footer>

@@ -1,0 +1,41 @@
+<ion-footer *ngIf="itemDetail">
+  <ion-item
+    button
+    detail="true"
+    detail-icon="caret-forward-outline"
+    (click)="seeDetail(itemDetail.id)"
+  >
+    <ion-label>
+      <h1>{{ itemDetail.name }}</h1>
+      <p>
+        <span>Anno: {{ itemDetail.year }} ||</span
+        ><span *ngFor="let celebrity of itemDetail.cast"
+          ><ng-container *ngIf="celebrity.category === 'director'">
+            Regia: {{ celebrity.celebrityName }} ||</ng-container
+          ></span
+        ><span> Sceneggiatura: </span
+        ><span *ngFor="let celebrity of itemDetail.cast"
+          ><ng-container
+            *ngIf="
+              celebrity.category !== 'director' &&
+              celebrity.category !== 'actor' &&
+              celebrity.category !== 'actress'
+            "
+          >
+            {{ celebrity.celebrityName }},
+          </ng-container></span
+        >
+      </p>
+      <span>Star: </span>
+      <span *ngFor="let celebrity of itemDetail.cast">
+        <ng-container
+          *ngIf="
+            celebrity.category === 'actor' || celebrity.category === 'actress'
+          "
+        >
+          {{ celebrity.celebrityName }},
+        </ng-container>
+      </span>
+    </ion-label>
+  </ion-item>
+</ion-footer>

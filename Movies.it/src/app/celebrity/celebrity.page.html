@@ -1,0 +1,19 @@
+<ion-header [translucent]="true">
+  <app-header
+  [title] = "titlePage"
+  [showAdd] = "true"
+  [showBack] = "false"
+  (addEvent) = "clickItemCreate()"
+  ></app-header>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <app-list 
+  [isCelebrity] = "true"
+  [items_list]="celebrities_list"
+  (clickItem) = "clickItem($event)"
+  (clickItemEdit) = "clickItemEdit($event)"
+  (clickItemRemove) = "clickItemRemove($event)"
+  ></app-list>
+  <app-footer [itemDetail] = "celebritySelected"></app-footer>
+</ion-content>

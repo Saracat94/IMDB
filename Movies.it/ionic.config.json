@@ -1,0 +1,7 @@
+{
+  "name": "ProgettoSidea",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

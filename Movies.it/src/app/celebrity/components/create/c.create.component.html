@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+    <app-header
+  [title] = "titlePage"
+  [showAdd] = "false"
+  [showBack] = "true"
+  ></app-header>
+    <form *ngIf="formUser" [formGroup]="formUser" (ngSubmit)="submitForm()">
+        <ion-list>
+            <ion-item>
+                <ion-input label="Nome:" formControlName="name" type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-input label="Anno di nascita:" formControlName="birthYear" type="number"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-input label="Anno di morte:" formControlName="deathYear" type="number"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-button type="submit" expand="block" [disabled]="!formUser.valid">Salva</ion-button>
+            </ion-item>
+        </ion-list>
+
+    </form>
+</ion-header>

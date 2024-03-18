@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <!-- BACK BUTTON -->
+    <ion-buttons *ngIf="showBack" slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <!-- TITLE -->
+    <ion-title slot="start">{{ title }}</ion-title>
+    <!-- RATING RANGE -->
+    <ion-range *ngIf="showRange" slot="end"
+        labelPlacement="start"
+        label="Visualizza i film con rating maggiore di:"
+        [pin]="true"
+        [min]="0"
+        [max]="10"
+        color="primary"
+        (ionChange)="ratingChange($event)"
+      ></ion-range>
+    <!-- ORDER BY RATING -->
+    <ion-select
+      *ngIf="showOrderTo"
+      slot="end"
+      placeholder="Visualizza Film"
+      (ionChange) = "orderChange($event)"
+ 
+    >
+      <ion-select-option value="desc">dal più apprezzato</ion-select-option>
+      <ion-select-option value="asc">dal meno apprezzato</ion-select-option>
+    </ion-select>
+    <!-- CREATE BUTTON -->
+    <ion-fab-button
+      *ngIf="showAdd"
+      size="small"
+      slot="end"
+      (click)="clickItemCreate()"
+    >
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-toolbar>
+  <ion-toolbar *ngIf="showSearchbar">
+    <!-- SEARCHBAR -->
+    <form  [formGroup]="formSearch">
+      <ion-searchbar
+        formControlName="research"
+        type="string"
+        [debounce]="500"
+      ></ion-searchbar>
+    </form>
+  </ion-toolbar>
+</ion-header>

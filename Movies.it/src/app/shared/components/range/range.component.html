@@ -1,0 +1,10 @@
+<ion-range
+        labelPlacement="start"
+        label="Visualizza i film con rating maggiore di:"
+        [pin]="true"
+        [min]="0"
+        [max]="10"
+        color="success"
+        (ionChange)="ratingChange($event)"
+      ></ion-range>
+      <!-- <ion-label>ionChange emitted value: {{ lastEmittedValue }}</ion-label> -->
